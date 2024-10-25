@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: #002339;
+        color: #fff;
+    }
+
+    .container {
+        margin: 12%;
+        width: 90%;
+        max-width: 700px;
+    }
+    .container h1{
+        font-size: 45px;
+        font-weight: 500;
+    }
+    .container h1 span{
+        color: #019f55;
+        border-bottom: 4px solid #019f55;
+    }
+    .display{
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 26px 20px;
+        border-radius: 6px;
+    }
+    .display input{
+        border: none;
+        outline: none;
+        font-size: 25px;
+        font-weight: 500;
+        color: #000;
+        width: 60%;
+    }
+    .display .icon{
+        color: #019f55;
+        font-size: 50px;
+        font-weight: 500;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+    button{
+        width: 50%;
+        padding: 15px 0px;
+        margin-top: 10px;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        background-color: #2de66e;
+        color: #002339;
+        cursor: pointer;
+        font-size: 28px;
+        font-weight: 500;
+    }
+    button .icon2{
+        font-size: 30px;
+        font-weight: bold;
+        color: #002339;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Generate a <br><span> Random Password</span></h1>
+        <div class="display">
+            <input type="text" id="InpuBox" placeholder="Generate password">
+            <ion-icon name="copy-outline" class="icon" onclick="copyPassword()"></ion-icon>
+        </div>
+        <button onclick="createPassword()"><ion-icon name="flash-outline" class="icon2"></ion-icon>Generate Password</button>
+    </div>
+
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+  const UpperSet = "ABCDEFGHIJKLMNOPQURSTUVWXYZ";
+      const lowerSet = "abcdefghijklmnopqurstuvwxyz";
+      const NumberSet = "12345678910";
+      const symbolSet = "!@#$%^&*()_=|[]";
+
+
+
+let PasswordBox = document.querySelector("#InpuBox");
+let lenght = 12;
+
+let allcahr  =  UpperSet + lowerSet + NumberSet + symbolSet
+function createPassword(){
+
+
+    let password = "";
+
+    password += UpperSet[Math.floor(Math.random() * UpperSet.length)]
+    password += lowerSet[Math.floor(Math.random() * lowerSet.length)]
+    password += NumberSet[Math.floor(Math.random() * NumberSet.length)]
+    password += symbolSet[Math.floor(Math.random() * symbolSet.length)]
+
+
+    if(lenght > password.length){
+        password += allcahr[Math.floor(Math.random() * allcahr.length)]
+    }
+
+    PasswordBox.value = password;
+
+
+
+}
+
+
+function copyPassword (){
+    PasswordBox.select();
+    document.execCommand("copy")
+}
+
+</script>
+</body>
+
+</html>
